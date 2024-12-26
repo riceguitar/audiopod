@@ -9,18 +9,18 @@ defined( 'ABSPATH' ) or die;
 ?>
 <div class="sm wrap">
 	<div class="intro">
-		<h1 class="wp-heading-inline"><?php _e( 'Sermon Manager Import/Export', 'sermon-manager-for-wordpress' ); ?></h1>
+		<h1 class="wp-heading-inline"><?php _e( 'Sermon Manager Import/Export', 'audiopod-wp' ); ?></h1>
 	</div>
 	<div class="wp-list-table widefat">
-		<p><?php _e( 'We have made it easy to backup, migrate or bring sermons from another plugin. Choose the relevant option below to get started.', 'sermon-manager-for-wordpress' ); ?></p>
+		<p><?php _e( 'We have made it easy to backup, migrate or bring sermons from another plugin. Choose the relevant option below to get started.', 'audiopod-wp' ); ?></p>
 		<div id="the-list">
 			<div class="plugin-card card-import-sm">
 				<div class="plugin-card-top">
 					<img src="<?php echo SM_URL; ?>assets/images/import-sm.jpg" class="plugin-icon"
-							alt="<?php esc_attr_e( 'Import from file', 'sermon-manager-for-wordpress' ); ?>">
+							alt="<?php esc_attr_e( 'Import from file', 'audiopod-wp' ); ?>">
 					<div class="name column-name">
 						<h3>
-							<?php _e( 'Import from file', 'sermon-manager-for-wordpress' ); ?>
+							<?php _e( 'Import from file', 'audiopod-wp' ); ?>
 						</h3>
 					</div>
 					<div class="action-links">
@@ -34,7 +34,7 @@ defined( 'ABSPATH' ) or die;
 									?>
 									<div class="error">
 										<p>
-											<?php esc_html_e( 'Before you can upload your import file, you will need to fix the following error:', 'sermon-manager-for-wordpress' ); ?>
+											<?php esc_html_e( 'Before you can upload your import file, you will need to fix the following error:', 'audiopod-wp' ); ?>
 										</p>
 										<p>
 											<strong>
@@ -52,11 +52,11 @@ defined( 'ABSPATH' ) or die;
 											<input type="hidden" name="max_file_size" value="<?php echo $bytes; ?>"/>
 										</p>
 										<input class="button" id="submit" type="submit" name="submit"
-												value="<?php esc_attr_e( 'Import from file', 'sermon-manager-for-wordpress' ); ?>"/>
+												value="<?php esc_attr_e( 'Import from file', 'audiopod-wp' ); ?>"/>
 									</form>
 									<span class="button activate-now" id="sm-import-trigger">
 										<span>
-											<?php _e( 'Import', 'sermon-manager-for-wordpress' ); ?>
+											<?php _e( 'Import', 'audiopod-wp' ); ?>
 										</span>
 										<span class="import-sniper">
 											<img src="<?php echo admin_url( 'images/wpspin_light.gif' ); ?>">
@@ -65,23 +65,23 @@ defined( 'ABSPATH' ) or die;
 								<?php endif; ?>
 							</li>
 							<li><a href="" class=""
-										aria-label="<?php esc_attr_e( 'More Details', 'sermon-manager-for-wordpress' ); ?>">
-									<?php _e( 'More Details', 'sermon-manager-for-wordpress' ); ?>
+										aria-label="<?php esc_attr_e( 'More Details', 'audiopod-wp' ); ?>">
+									<?php _e( 'More Details', 'audiopod-wp' ); ?>
 								</a></li>
 						</ul>
 					</div>
 					<div class="desc column-description">
-						<p><?php _e( 'Import sermons from another Sermon Manager installation.', 'sermon-manager-for-wordpress' ); ?></p>
+						<p><?php _e( 'Import sermons from another Sermon Manager installation.', 'audiopod-wp' ); ?></p>
 					</div>
 				</div>
 			</div>
 			<div class="plugin-card card-export-sm">
 				<div class="plugin-card-top">
 					<img src="<?php echo SM_URL; ?>assets/images/export-sm.jpg" class="plugin-icon"
-							alt="<?php esc_attr_e( 'Export to file', 'sermon-manager-for-wordpress' ); ?>">
+							alt="<?php esc_attr_e( 'Export to file', 'audiopod-wp' ); ?>">
 					<div class="name column-name">
 						<h3>
-							<?php _e( 'Export to file', 'sermon-manager-for-wordpress' ); ?>
+							<?php _e( 'Export to file', 'audiopod-wp' ); ?>
 						</h3>
 					</div>
 					<div class="action-links">
@@ -89,23 +89,23 @@ defined( 'ABSPATH' ) or die;
 							<li>
 								<a href="<?php echo $_SERVER['REQUEST_URI']; ?>&doimport=exsm"
 										class="button activate-now" id="sm-export-content"
-										aria-label="<?php esc_attr_e( 'Export to file', 'sermon-manager-for-wordpress' ); ?>">
-									<?php _e( 'Export', 'sermon-manager-for-wordpress' ); ?>
+										aria-label="<?php esc_attr_e( 'Export to file', 'audiopod-wp' ); ?>">
+									<?php _e( 'Export', 'audiopod-wp' ); ?>
 								</a>
 							</li>
 							<li><a href="" class=""
-										aria-label="<?php esc_attr_e( 'More Details', 'sermon-manager-for-wordpress' ); ?>">
-									<?php _e( 'More Details', 'sermon-manager-for-wordpress' ); ?></a></li>
+										aria-label="<?php esc_attr_e( 'More Details', 'audiopod-wp' ); ?>">
+									<?php _e( 'More Details', 'audiopod-wp' ); ?></a></li>
 						</ul>
 					</div>
 					<div class="desc column-description">
-						<p><?php _e( 'Create an export for the purpose of backup or migration to another website.', 'sermon-manager-for-wordpress' ); ?></p>
+						<p><?php _e( 'Create an export for the purpose of backup or migration to another website.', 'audiopod-wp' ); ?></p>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
 	<p class="description">
-		<?php _e( 'Note: We recommend you create a backup of your current database just in case.', 'sermon-manager-for-wordpress' ); ?>
+		<?php _e( 'Note: We recommend you create a backup of your current database just in case.', 'audiopod-wp' ); ?>
 	</p>
 </div>

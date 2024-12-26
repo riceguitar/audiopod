@@ -34,7 +34,7 @@ if ( version_compare( PHP_VERSION, '8.0.0', '<' ) ) {
 				<?php
 				// translators: %1$s current PHP version, see msgid "PHP %s", effectively <strong>PHP %s</strong>.
 				// translators: %2$s required PHP version, see msgid "PHP %s", effectively <strong>PHP %s</strong>.
-				echo wp_sprintf( esc_html__( 'You are running %1$s, but Sermon Manager requires at least %2$s.', 'sermon-manager-for-wordpress' ), '<strong>' . wp_sprintf( esc_html__( 'PHP %s', 'sermon-manager-for-wordpress' ), PHP_VERSION ) . '</strong>', '<strong>' . wp_sprintf( esc_html__( 'PHP %s', 'sermon-manager-for-wordpress' ), '5.3.0' ) . '</strong>' );
+				echo wp_sprintf( esc_html__( 'You are running %1$s, but Sermon Manager requires at least %2$s.', 'audiopod-wp' ), '<strong>' . wp_sprintf( esc_html__( 'PHP %s', 'audiopod-wp' ), PHP_VERSION ) . '</strong>', '<strong>' . wp_sprintf( esc_html__( 'PHP %s', 'audiopod-wp' ), '5.3.0' ) . '</strong>' );
 				?>
 			</p>
 		</div>
@@ -217,7 +217,7 @@ class SermonManager { // phpcs:ignore
 		// $has_series    = has_term( '', 'wpfc_sermon_series', $post );
 
 		// if ( $bible_passage ) {
-		// 	$content .= __( 'Bible Text:', 'sermon-manager-for-wordpress' ) . ' ' . $bible_passage;
+		// 	$content .= __( 'Bible Text:', 'audiopod-wp' ) . ' ' . $bible_passage;
 		// }
 
 		// if ( $has_preachers ) {
@@ -233,7 +233,7 @@ class SermonManager { // phpcs:ignore
 		// 	if ( $has_preachers ) {
 		// 		$content .= ' | ';
 		// 	}
-		// 	$content .= strip_tags( get_the_term_list( $post->ID, 'wpfc_sermon_series', __( 'Series:', 'sermon-manager-for-wordpress' ) . ' ', ', ', '' ) );
+		// 	$content .= strip_tags( get_the_term_list( $post->ID, 'wpfc_sermon_series', __( 'Series:', 'audiopod-wp' ) . ' ', ', ', '' ) );
 		// }
 
 		// $description = strip_tags( trim( get_post_meta( $post->ID, 'sermon_description', true ) ) );
@@ -324,7 +324,7 @@ class SermonManager { // phpcs:ignore
 	 * @return void
 	 */
 	public static function load_translations() {
-		load_plugin_textdomain( 'sermon-manager-for-wordpress', false, plugin_basename( dirname( __FILE__ ) ) . '/languages' );
+		load_plugin_textdomain( 'audiopod-wp', false, plugin_basename( dirname( __FILE__ ) ) . '/languages' );
 	}
 
 	/**
@@ -682,7 +682,7 @@ class SermonManager { // phpcs:ignore
 									<?php endif; ?>
 
 									<div class="notice notice-success">
-										<p><?php _e( 'Import done!', 'sermon-manager-for-wordpress' ); ?></p>
+										<p><?php _e( 'Import done!', 'audiopod-wp' ); ?></p>
 									</div>
 									<?php
 								}
@@ -915,7 +915,7 @@ class SermonManager { // phpcs:ignore
 						<p>
 							<?php
 							// translators: %s: The plugin name. Effectively "<strong>Sermon Manager</strong>".
-							echo wp_sprintf( __( '%s requires output buffering to be turned on to display content. It is currently off. Please enable it or contact your hosting provider for help. Most of plugin functionality will be disabled until output buffering is enabled.', 'sermon-manager-for-wordpress' ), '<strong>' . __( 'Sermon Manager', 'sermon-manager-for-wordpress' ) . '</strong>' );
+							echo wp_sprintf( __( '%s requires output buffering to be turned on to display content. It is currently off. Please enable it or contact your hosting provider for help. Most of plugin functionality will be disabled until output buffering is enabled.', 'audiopod-wp' ), '<strong>' . __( 'Sermon Manager', 'audiopod-wp' ) . '</strong>' );
 							?>
 						</p>
 					</div>
