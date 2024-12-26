@@ -30,7 +30,7 @@ class SM_Admin_Menus {
 	 * Add menu item.
 	 */
 	public function settings_menu() {
-		add_submenu_page( 'edit.php?post_type=wpfc_sermon', __( 'Sermon Manager Settings', 'audiopod-wp' ), __( 'Settings', 'audiopod-wp' ), 'manage_wpfc_sm_settings', 'sm-settings', array(
+		add_submenu_page( 'edit.php?post_type=wpfc_sermon', __( 'AudioPod Settings', 'audiopod-wp' ), __( 'Settings', 'audiopod-wp' ), 'manage_wpfc_sm_settings', 'sm-settings', array(
 			$this,
 			'settings_page',
 		) );

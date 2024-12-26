@@ -9,7 +9,7 @@ defined( 'ABSPATH' ) or die;
 ?>
 <div class="sm wrap">
 	<div class="intro">
-		<h1 class="wp-heading-inline"><?php _e( 'Sermon Manager Import/Export', 'audiopod-wp' ); ?></h1>
+		<h1 class="wp-heading-inline"><?php _e( 'AudioPod Import and Export', 'audiopod-wp' ); ?></h1>
 	</div>
 	<div class="wp-list-table widefat">
 		<p><?php _e( 'We have made it easy to backup, migrate or bring sermons from another plugin. Choose the relevant option below to get started.', 'audiopod-wp' ); ?></p>

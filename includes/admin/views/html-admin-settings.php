@@ -11,7 +11,7 @@ $current_tab = empty( $current_tab ) ? 'general' : $current_tab;
 ?>
 <div class="wrap sm sm_settings_<?php echo $current_tab; ?>">
 	<div class="intro">
-		<h1 class="wp-heading-inline">Sermon Manager Settings</h1>
+		<h1 class="wp-heading-inline">AudioPod Settings</h1>
 	</div>
 	<?php SM_Admin_Settings::show_messages(); ?>
 	<div class="settings-main">
