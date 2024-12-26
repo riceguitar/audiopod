@@ -62,7 +62,7 @@ The Sermon Manager is available as a FREE download however in order to maintain 
 
 You can access the paid support options via [our website](http://wpforchurch.com/).
 
-Bug fixing and fixing unexpected behavior *is free* and *always will be free*. Just [make an issue on GitHub](https://github.com/WP-for-Church/Sermon-Manager/issues/new) or [create a support thread on WordPress](https://wordpress.org/support/plugin/sermon-manager-for-wordpress#new-post) and we will solve it ASAP.
+Bug fixing and fixing unexpected behavior *is free* and *always will be free*. Just [make an issue on GitHub](https://github.com/WP-for-Church/Sermon-Manager/issues/new) or [create a support thread on WordPress](https://wordpress.org/support/plugin/audiopod-wp#new-post) and we will solve it ASAP.
 
 ### Sermon Manager Pro Features ###
 

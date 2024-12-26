@@ -39,21 +39,22 @@ class SM_Dates_WP extends SM_Dates {
 	 * @return void
 	 */
 	public static function hook() {
-		add_action( 'save_post_wpfc_sermon', array( get_class(), 'maybe_update_date' ), 10, 3 );
-		add_action( 'save_post_wpfc_sermon', array( get_class(), 'save_terms_dates' ), 20, 3 );
-		add_action( 'pre_post_update', array( get_class(), 'get_original_terms' ) );
-		add_action( 'pre_post_update', array( get_class(), 'get_original_date' ) );
-		add_filter( 'cmb2_override_sermon_date_meta_remove', '__return_true' );
-		add_filter( 'cmb2_override_sermon_date_meta_save', '__return_true' );
+	    // Replace get_class() with static::class
+	    add_action('save_post_wpfc_sermon', array(static::class, 'maybe_update_date'), 10, 3);
+	    add_action('save_post_wpfc_sermon', array(static::class, 'save_terms_dates'), 20, 3);
+	    add_action('pre_post_update', array(static::class, 'get_original_terms'));
+	    add_action('pre_post_update', array(static::class, 'get_original_date'));
+	    add_filter('cmb2_override_sermon_date_meta_remove', '__return_true');
+	    add_filter('cmb2_override_sermon_date_meta_save', '__return_true');
 
-		/**
-		 * Exit if disabled.
-		 */
-		if ( apply_filters( 'sm_dates_wp', true ) === false || 'date' === SermonManager::getOption( 'archive_orderby' ) ) {
-			return;
-		}
-
-		add_filter( 'get_the_date', array( get_class(), 'get_the_date' ), 10, 3 );
+	    /**
+	     * Exit if disabled.
+	     */
+	    if (apply_filters('sm_dates_wp', true) === false || 'date' === SermonManager::getOption('archive_orderby')) {
+	        return;
+	    }
+	    
+	    add_filter('get_the_date', array(static::class, 'get_the_date'), 10, 3);
 	}
 
 	/**
