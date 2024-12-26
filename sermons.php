@@ -1,8 +1,8 @@
 <?php // phpcs:ignore
 /**
- * Plugin Name: AudioPod (Fork of Sermon Manager for WP)
+ * Plugin Name: AudioPod
  * Plugin URI: https://audiopod.cloud
- * Description: Add audio and video sermons, manage speakers, series, and more.
+ * Description: For of Sermon Manager for Wordpress
  * Version: 1.0
  * Author: David Sudarma
  * Author URI: https://audiopod.cloud
