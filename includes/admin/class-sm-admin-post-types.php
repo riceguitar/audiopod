@@ -54,26 +54,26 @@ class SM_Admin_Post_Types {
 		$messages['wpfc_sermon'] = array(
 			0  => '', // Unused. Messages start at index 1.
 			// translators: %s: The URL to the sermon.
-			1  => wp_sprintf( esc_html__( 'Sermon updated. %s', 'audiopod-wp' ), '<a href="' . esc_url( get_permalink( $post_ID ) ) . '">' . esc_html__( 'View sermon', 'audiopod-wp' ) . '</a>' ),
-			2  => esc_html__( 'Custom field updated.', 'audiopod-wp' ),
-			3  => esc_html__( 'Custom field deleted.', 'audiopod-wp' ),
-			4  => esc_html__( 'Sermon updated.', 'audiopod-wp' ),
+			1  => wp_sprintf( esc_html__( 'Sermon updated. %s', 'sermon-manager-for-wordpress' ), '<a href="' . esc_url( get_permalink( $post_ID ) ) . '">' . esc_html__( 'View sermon', 'sermon-manager-for-wordpress' ) . '</a>' ),
+			2  => esc_html__( 'Custom field updated.', 'sermon-manager-for-wordpress' ),
+			3  => esc_html__( 'Custom field deleted.', 'sermon-manager-for-wordpress' ),
+			4  => esc_html__( 'Sermon updated.', 'sermon-manager-for-wordpress' ),
 			// translators: %s: Date and time of the revision.
-			5  => isset( $_GET['revision'] ) ? wp_sprintf( esc_html__( 'Sermon restored to revision from %s', 'audiopod-wp' ), wp_post_revision_title( (int) $_GET['revision'], false ) ) : false,
+			5  => isset( $_GET['revision'] ) ? wp_sprintf( esc_html__( 'Sermon restored to revision from %s', 'sermon-manager-for-wordpress' ), wp_post_revision_title( (int) $_GET['revision'], false ) ) : false,
 			// translators: %s: The URL to the sermon.
-			6  => wp_sprintf( esc_html__( 'Sermon published. %s', 'audiopod-wp' ), '<a href="' . esc_url( get_permalink( $post_ID ) ) . '">' . esc_html__( 'View sermon', 'audiopod-wp' ) . '</a>' ),
-			7  => esc_html__( 'Sermon saved.', 'audiopod-wp' ),
+			6  => wp_sprintf( esc_html__( 'Sermon published. %s', 'sermon-manager-for-wordpress' ), '<a href="' . esc_url( get_permalink( $post_ID ) ) . '">' . esc_html__( 'View sermon', 'sermon-manager-for-wordpress' ) . '</a>' ),
+			7  => esc_html__( 'Sermon saved.', 'sermon-manager-for-wordpress' ),
 			// translators: %s: The URL to the sermon.
-			8  => wp_sprintf( esc_html__( 'Sermon submitted. %s', 'audiopod-wp' ), '<a target="_blank" href="' . esc_url( add_query_arg( 'preview', 'true', get_permalink( $post_ID ) ) ) . '">' . esc_html__( 'Preview sermon', 'audiopod-wp' ) . '</a>' ),
+			8  => wp_sprintf( esc_html__( 'Sermon submitted. %s', 'sermon-manager-for-wordpress' ), '<a target="_blank" href="' . esc_url( add_query_arg( 'preview', 'true', get_permalink( $post_ID ) ) ) . '">' . esc_html__( 'Preview sermon', 'sermon-manager-for-wordpress' ) . '</a>' ),
 			// translators: %1$s: The date and time. %2$s: The preview sermon URL.
-			9  => wp_sprintf( esc_html__( 'Sermon scheduled for: %1$s. %2$s', 'audiopod-wp' ),
+			9  => wp_sprintf( esc_html__( 'Sermon scheduled for: %1$s. %2$s', 'sermon-manager-for-wordpress' ),
 				// translators: %1$s: Date. %2$s: Time.
-				'<strong>' . wp_sprintf( esc_html__( '%1$s at %2$s', 'audiopod-wp' ), get_post_time( get_option( 'date_format' ), false, null, true ), get_post_time( get_option( 'time_format' ), false, null, true ) ) . '</strong>',
+				'<strong>' . wp_sprintf( esc_html__( '%1$s at %2$s', 'sermon-manager-for-wordpress' ), get_post_time( get_option( 'date_format' ), false, null, true ), get_post_time( get_option( 'time_format' ), false, null, true ) ) . '</strong>',
 				// translators: %s: The preview sermon URL.
-				'<a target="_blank" href="' . esc_url( get_permalink( $post_ID ) ) . '">' . esc_html__( 'Preview sermon', 'audiopod-wp' ) . '</a>'
+				'<a target="_blank" href="' . esc_url( get_permalink( $post_ID ) ) . '">' . esc_html__( 'Preview sermon', 'sermon-manager-for-wordpress' ) . '</a>'
 			),
 			// translators: %s The URL to the sermon.
-			10 => wp_sprintf( esc_html__( 'Sermon draft updated. %s', 'audiopod-wp' ), '<a target="_blank" href="' . esc_url( add_query_arg( 'preview', 'true', get_permalink( $post_ID ) ) ) . '">' . esc_html__( 'View sermon', 'audiopod-wp' ) . '</a>' ),
+			10 => wp_sprintf( esc_html__( 'Sermon draft updated. %s', 'sermon-manager-for-wordpress' ), '<a target="_blank" href="' . esc_url( add_query_arg( 'preview', 'true', get_permalink( $post_ID ) ) ) . '">' . esc_html__( 'View sermon', 'sermon-manager-for-wordpress' ) . '</a>' ),
 		);
 
 		return $messages;
@@ -93,13 +93,13 @@ class SM_Admin_Post_Types {
 
 		$columns             = array();
 		$columns['cb']       = '<input type="checkbox" />';
-		$columns['title']    = __( 'Sermon Title', 'audiopod-wp' );
+		$columns['title']    = __( 'Sermon Title', 'sermon-manager-for-wordpress' );
 		$columns['preacher'] = sm_get_taxonomy_field( 'wpfc_preacher', 'singular_name' );
-		$columns['series']   = __( 'Sermon Series', 'audiopod-wp' );
-		$columns['topics']   = __( 'Topics', 'audiopod-wp' );
-		$columns['views']    = __( 'Views', 'audiopod-wp' );
+		$columns['series']   = __( 'Sermon Series', 'sermon-manager-for-wordpress' );
+		$columns['topics']   = __( 'Topics', 'sermon-manager-for-wordpress' );
+		$columns['views']    = __( 'Views', 'sermon-manager-for-wordpress' );
 		$columns['comments'] = $existing_columns['comments'];
-		$columns['preached'] = __( 'Preached', 'audiopod-wp' );
+		$columns['preached'] = __( 'Preached', 'sermon-manager-for-wordpress' );
 		$columns['date']     = __( 'Published' );
 
 		return $columns + $existing_columns;
@@ -255,7 +255,7 @@ class SM_Admin_Post_Types {
 	 */
 	public function enter_title_here( $text, $post ) {
 		if ( 'wpfc_sermon' === $post->post_type ) {
-			$text = __( 'Sermon title', 'audiopod-wp' );
+			$text = __( 'Sermon title', 'sermon-manager-for-wordpress' );
 		}
 
 		return $text;
@@ -310,7 +310,7 @@ class SM_Admin_Post_Types {
 
 		$output .= '<select name="wpfc_service_type" id="dropdown_wpfc_service_type">';
 		// translators: %s Taxonomy name. Default: Service Type.
-		$output .= '<option value="">' . wp_sprintf( __( 'Filter by %s', 'audiopod-wp' ), sm_get_taxonomy_field( 'wpfc_service_type', 'singular_name' ) ) . '</option>';
+		$output .= '<option value="">' . wp_sprintf( __( 'Filter by %s', 'sermon-manager-for-wordpress' ), sm_get_taxonomy_field( 'wpfc_service_type', 'singular_name' ) ) . '</option>';
 
 		foreach ( $terms as $term ) {
 			$output .= '<option value="' . $term->slug . '" ';

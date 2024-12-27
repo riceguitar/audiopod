@@ -74,17 +74,17 @@ function render_wpfc_sorting( $args = array() ) {
 			array(
 				'className' => 'sortSeries',
 				'taxonomy'  => 'wpfc_sermon_series',
-				'title'     => __( 'Series', 'audiopod-wp' ),
+				'title'     => __( 'Series', 'sermon-manager-for-wordpress' ),
 			),
 			array(
 				'className' => 'sortTopics',
 				'taxonomy'  => 'wpfc_sermon_topics',
-				'title'     => __( 'Topic', 'audiopod-wp' ),
+				'title'     => __( 'Topic', 'sermon-manager-for-wordpress' ),
 			),
 			array(
 				'className' => 'sortBooks',
 				'taxonomy'  => 'wpfc_bible_book',
-				'title'     => __( 'Book', 'audiopod-wp' ),
+				'title'     => __( 'Book', 'sermon-manager-for-wordpress' ),
 			),
 			array(
 				'className' => 'sortServiceTypes',
