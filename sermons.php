@@ -2,7 +2,7 @@
 /**
  * Plugin Name: AudioPod
  * Plugin URI: https://audiopod.cloud
- * Description: For of Sermon Manager for Wordpress
+ * Description: Fork of Sermon Manager for Wordpress
  * Version: 1.0
  * Author: David Sudarma
  * Author URI: https://audiopod.cloud
@@ -981,59 +981,225 @@ function on_post_view_update_multiple_sermon_meta_data()
 
 
 add_action(
-		'sm_cmb2_meta_fields',
-		function ( $sermon_details_meta ) {
-			/**
-			 * Sermon Details meta box.
-			 *
-			 * @var $sermon_details_meta \CMB2
-			 */
+	'sm_cmb2_meta_fields',
+	function ( $sermon_details_meta ) {
+		/**
+		 * Sermon Details meta box.
+		 *
+		 * @var $sermon_details_meta \CMB2
+		 */
 
-			$sermon_details_meta->remove_field( 'sermon_description' );
+		$sermon_details_meta->remove_field( 'sermon_description' );
+	}
+);
+
+
+// Disable Gutenberg until we add Guten-blocks.
+add_filter(
+	'use_block_editor_for_post_type',
+	function ( $can_edit, $post_type ) {
+		$disable_gutenberg_block_editor = get_option("sermonmanager_disable_gutenberg_block_editor");
+		if ( 'wpfc_sermon' === $post_type && $disable_gutenberg_block_editor ==="yes" ) {
+			$can_edit = false;
 		}
-	);
+
+		return $can_edit;
+	},
+	10,
+	2
+);
 
 
-	// Disable Gutenberg until we add Guten-blocks.
-	add_filter(
-		'use_block_editor_for_post_type',
-		function ( $can_edit, $post_type ) {
-			$disable_gutenberg_block_editor = get_option("sermonmanager_disable_gutenberg_block_editor");
-			if ( 'wpfc_sermon' === $post_type && $disable_gutenberg_block_editor ==="yes" ) {
-				$can_edit = false;
-			}
+// Hijack default editor to use our meta description.
+add_action(
+	'edit_form_after_title',
+	function () {
+		global $post;
 
-			return $can_edit;
-		},
-		10,
-		2
-	);
-
-
-	// Hijack default editor to use our meta description.
-	add_action(
-		'edit_form_after_title',
-		function () {
-			global $post;
-
-			if ( get_post_type() !== 'wpfc_sermon' ) {
-				return;
-			}
-
-			/**
-			 * The sermon.
-			 *
-			 * @var $post \WP_Post
-			 */
-
-			$GLOBALS['sm_post_content'] = $post->post_content; // phpcs:ignore
-			// $post->post_content = get_post_meta( $post->ID, 'sermon_description', true );
-			// error_log(print_r($post,true));
-			$my_post = array(
-		      'ID'           => $post->ID,
-		      'post_content' => $post->post_content,
-		  );
-			wp_update_post( $my_post );
-
+		if ( get_post_type() !== 'wpfc_sermon' ) {
+			return;
 		}
-	);
+
+		/**
+		 * The sermon.
+		 *
+		 * @var $post \WP_Post
+		 */
+
+		$GLOBALS['sm_post_content'] = $post->post_content; // phpcs:ignore
+		// $post->post_content = get_post_meta( $post->ID, 'sermon_description', true );
+		// error_log(print_r($post,true));
+		$my_post = array(
+			'ID'           => $post->ID,
+			'post_content' => $post->post_content,
+		);
+		wp_update_post( $my_post );
+
+	}
+);
+
+
+
+
+/**
+ * Loads Sermon Manager Pro after other plugins.
+ */
+function smp_load() {
+	define( 'SMP_VERSION', preg_match( '/^.*Version: (.*)$/m', file_get_contents( __FILE__ ), $version ) ? trim( $version[1] ) : 'N/A' );
+	define( 'SMP_SM_VERSION', '1.0' ); // Minimum required Sermon Manager version.
+
+	define( 'SMP__FILE__', __FILE__ );
+	define( 'SMP_BASENAME', plugin_basename( SMP__FILE__ ) );
+	define( 'SMP_PATH', dirname( SMP__FILE__ ) . '/' ); // With a trailing slash.
+	define( 'SMP_PATH_INCLUDES', SMP_PATH . 'includes/' ); // With a trailing slash.
+	define( 'SMP_PATH_SHORTCODES', SMP_PATH_INCLUDES . 'shortcodes/' ); // With a trailing slash.
+
+	define( 'SMP_URL', plugins_url( '/', SMP__FILE__ ) ); // With a trailing slash.
+	define( 'SMP_ASSETS_URL', SMP_URL . 'assets/' );
+
+	if ( ! class_exists( 'SermonManager' ) || ( defined( 'SM_VERSION' ) && version_compare( SM_VERSION, SMP_SM_VERSION, '<' ) ) ) {
+		add_action( 'admin_notices', 'smp_fail_sm' );
+	} else {
+		require_once SMP_PATH . 'includes/plugin.php';
+	}
+
+	/**
+	 * Sermon Manager Pro admin notice for missing/wrong Sermon Manager version.
+	 */
+	function smp_fail_sm() {
+		if ( defined( 'SM_VERSION' ) && version_compare( SM_VERSION, SMP_SM_VERSION, '<' ) ) {
+			/* translators: %s: Sermon Manager version */
+			$message = sprintf( __( '<strong>Sermon Manager Pro</strong> requires <strong>Sermon Manager</strong> version <strong>%s</strong> or greater. Plugin will not load.', 'sermon-manager-pro' ), SMP_SM_VERSION );
+		} else {
+			$message = __( '<strong>Sermon Manager Pro</strong> requires <strong>Sermon Manager</strong> to be installed. Plugin will not load.', 'sermon-manager-pro' );
+		}
+		$html_message = sprintf( '<div class="error">%s</div>', wpautop( $message ) );
+		echo wp_kses_post( $html_message );
+	}
+}
+
+add_action( 'plugins_loaded', 'smp_load' );
+
+
+
+add_action( 'init', 'my_run_only_once' );
+function my_run_only_once() {
+    // if ( did_action( 'init' ) >= 2 )
+    //     return;
+
+    // if( ! get_option('run_divi_option_reset_once') ) {
+
+        delete_option( 'et_bfb_settings' );
+
+        // update_option( 'run_divi_option_reset_once', true );
+    // }
+}
+
+
+
+/**
+ * Hook into the 'plugins_api' to display custom plugin details.
+ */
+add_filter('plugins_api', 'sermon_manager_pro_plugin_details', 20, 3);
+
+function sermon_manager_pro_plugin_details($false, $action, $args) {
+    // Ensure we only target our specific plugin.
+    if (isset($args->slug) && $args->slug === 'sermon-manager-pro') {
+        
+        // Path to the readme.txt file.
+        $readme_path = plugin_dir_path(__FILE__) . 'readme.txt';
+        
+        if (file_exists($readme_path)) {
+            // Get the contents of the readme.txt file.
+            $readme_content = file_get_contents($readme_path);
+            
+            // Parse specific sections (e.g., description, installation, faq, changelog).
+            $readme_data = sermon_manager_pro_parse_readme($readme_content);
+            // Convert markdown to HTML (you'll need to write a basic converter for things like * lists).
+            $description_html = sermon_manager_pro_convert_markdown_to_html($readme_data['description']);
+            $installation_html = sermon_manager_pro_convert_markdown_to_html($readme_data['installation']);
+            $faq_html = sermon_manager_pro_convert_markdown_to_html($readme_data['faq']);
+            $changelog_html = sermon_manager_pro_convert_markdown_to_html($readme_data['changelog']);
+            
+            // Add custom data to the response object.
+            $response = new stdClass();
+            $response->name = 'Sermon Manager Pro';
+            $response->slug = 'sermon-manager-pro';
+            $response->version = '2.0.15';
+            $response->author = '<a href="https://www.wpforchurch.com/">WP for Church</a>';
+            $response->homepage = 'https://sermonmanager.pro/';
+            $response->requires = '4.5';
+            $response->tested = '6.6.3';
+            $response->sections = array(
+                'description'  => wpautop($description_html),
+                'installation' => wpautop($installation_html),
+                'faq'          => wpautop($faq_html),
+                'changelog'    => wpautop($changelog_html),
+            );
+            $response->banners = array(
+                'low'  => plugin_dir_url(__FILE__) . 'assets/banner.jpg',
+                'high' => plugin_dir_url(__FILE__) . 'assets/banner.jpg',
+            );
+            $response->download_link = 'https://sermonmanager.pro/download/';
+            return $response;
+        }
+    }
+    return $false;
+}
+
+
+
+
+/**
+ * Function to manually parse the readme.txt file content.
+ * This extracts the description, installation, FAQ, and changelog sections.
+ */
+function sermon_manager_pro_parse_readme($content) {
+    $sections = array(
+        'description'  => '',
+        'installation' => '',
+        'faq'          => '',
+        'changelog'    => ''
+    );
+    
+    // Define the section markers based on typical WordPress readme.txt format.
+    $pattern = '/==\s(.*?)\s==/';
+
+    // Split content into sections using regex.
+    $split_content = preg_split($pattern, $content, -1, PREG_SPLIT_DELIM_CAPTURE);
+    
+    // Map content into corresponding sections.
+    for ($i = 1; $i < count($split_content); $i += 2) {
+        $section_name = strtolower(trim($split_content[$i]));
+        $section_content = trim($split_content[$i + 1]);
+        
+        if (isset($sections[$section_name])) {
+            $sections[$section_name] = $section_content;
+        }
+    }
+
+    return $sections;
+}
+
+
+
+// Hooking up our function to theme setup
+function additional_support() {
+	add_post_type_support( 'wpfc_sermon', 'editor' );
+}
+add_action( 'init', 'additional_support' );
+
+
+// Function to convert simple markdown (e.g., lists and bold text) to HTML.
+function sermon_manager_pro_convert_markdown_to_html($text) {
+    // Convert bullet points
+    $text = preg_replace('/^\* (.+)$/m', '<li>$1</li>', $text);
+    $text = '<ul>' . $text . '</ul>'; // Wrap the list with <ul> tag.
+
+    // Convert other markdown patterns as needed (for example, **bold**, etc.)
+    $text = preg_replace('/\*\*(.+)\*\*/', '<strong>$1</strong>', $text);
+
+    // You can add more markdown-to-HTML conversions here as needed.
+    
+    return $text;
+}
