@@ -10,8 +10,6 @@ namespace SMP;
 
 use SMP\Podcasting\Podcasting_Manager;
 use SMP\Shortcodes\Shortcodes_Manager;
-use SMP\Templating\Settings as Templating_Settings;
-use SMP\Templating\Templating_Manager;
 
 /**
  * Main Plugin Class
@@ -32,15 +30,6 @@ class Plugin {
 	 * @var Plugin
 	 */
 	public static $instance = null;
-
-	/**
-	 * Templating Manager.
-	 *
-	 * Holds the Templating Manager.
-	 *
-	 * @var Templating_Manager
-	 */
-	public $templating_manager;
 
 	/**
 	 * Shortcodes.
@@ -119,8 +108,6 @@ class Plugin {
 
 		add_action( 'init', array( $this, 'init' ), 0 );
 
-		// Register categories for Elementor
-		include_once SMP_PATH . 'includes/shortcodes/elementor/register_categories.php';
 	}
 
 	/**

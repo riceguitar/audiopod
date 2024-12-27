@@ -52,9 +52,6 @@ class Autoloader {
 					case 'shortcodes':
 						$path = 'shortcodes/';
 						break;
-					case 'templating':
-						$path = 'templating/';
-						break;
 					case 'podcasting':
 						$path = 'podcasting/';
 						break;

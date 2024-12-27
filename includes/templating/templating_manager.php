@@ -9,9 +9,6 @@
 namespace SMP\Templating;
 
 use SMP\Shortcodes\Template_Tags;
-use Twig_Environment;
-use Twig_Loader_Filesystem;
-use Twig_SimpleFunction;
 
 defined( 'ABSPATH' ) or die;
 
@@ -363,11 +360,7 @@ final class Templating_Manager {
 			array(
 				'single',
 				'archive',
-				'archive-elementor',
-				'archive-divi',
 				'taxonomy',
-				'taxonomy-elementor',
-				'taxonomy-divi',
 			)
 		) ) {
 			throw new \RuntimeException( 'The context is invalid. Requested context "' . esc_html( $context ) . '."' );
@@ -387,82 +380,7 @@ final class Templating_Manager {
 			}
 		}
 
-		// Get the template data.
-		$template = self::get_template();
-
-		// Check if template file exist.
-		$templates_root = $template->path;
-		$file_path      = $template->path . '/' . $context . '.twig';
-		if ( ! file_exists( $file_path ) || $template->is_invalid ) {
-			if ( strpos( $context, '-elementor' ) !== false ) {
-				$context        = str_replace( '-elementor', '', $context );
-				$templates_root = SMP_PATH . 'views/elementor';
-			}
-
-			if ( strpos( $context, '-divi' ) !== false ) {
-				$context        = str_replace( '-divi', '', $context );
-				$templates_root = SMP_PATH . 'views/divi';
-			}
-		}
-
-		if ( empty( $templates_root ) || ! $templates_root ) {
-			throw new \RuntimeException( 'Could not find the root directory for template files.' );
-		}
-
-		// Define Twig arguments.
-		$twig_args = array();
-		if ( wp_is_writable( SMP_PATH . 'cache/twig' ) ) {
-			$twig_args = array(
-				'cache'       => SMP_PATH . 'cache/twig',
-				'auto_reload' => true,
-			);
-		}
-
-		// Load the twig file.
-		$loader = new Twig_Loader_Filesystem( $templates_root );
-		$twig   = new Twig_Environment( $loader, $twig_args );
-
-		$twig->addFunction(
-			new Twig_SimpleFunction(
-				'fn',
-				function ( $function_name ) {
-					$args = func_get_args();
-					array_shift( $args );
-					if ( is_string( $function_name ) ) {
-						$function_name = trim( $function_name );
-					}
-
-					return call_user_func_array( $function_name, ( $args ) );
-				}
-			)
-		);
-
 		$GLOBALS['tt_object'] = $object; // phpcs:ignore
-
-		$twig->addFunction(
-			new Twig_SimpleFunction(
-				'TemplateTags',
-				function ( $method_name ) {
-					global $tt_object;
-
-					$args = func_get_args();
-					array_shift( $args );
-					if ( is_string( $method_name ) ) {
-						$method_name = trim( $method_name );
-					}
-
-					$template_tags = new Template_Tags( $tt_object, false );
-
-					return call_user_func_array( array( $template_tags, $method_name ), ( $args ) );
-				}
-			)
-		);
-
-		try {
-			$template = $twig->load( $context . '.twig' );
-		} catch ( \Exception $e ) {
-			throw new \RuntimeException( 'Error in loading template file: ' . $e->getMessage() );
-		}
 
 		$settings = Settings::get_settings();
 
@@ -501,20 +419,32 @@ final class Templating_Manager {
 			'bible_book'    => wp_get_post_terms( $object->ID, 'wpfc_bible_book' ),
 			'topics'        => wp_get_post_terms( $object->ID, 'wpfc_sermon_topics' ),
 			'service_type'  => wp_get_post_terms( $object->ID, 'wpfc_service_type' ),
-			// 'description'   => wpfc_sermon_description( '', '', true ),
+			'description'   => wpfc_sermon_description( '', '', true ),
 			'date_preached' => get_post_meta( $object->ID, 'sermon_date', true ),
 		);
 
-		$render_args = array(
-			'settings' => $settings,
-			'post'     => $object,
-			'args'     => $args,
-			'sermon'   => $sermon,
-		);
+		// Get template file path.
+		$template = self::get_active_template();
+		$template_path = $template->path . '/' . $context . '.php';
 
-		$GLOBALS['smpro_template'] = true;
+		if (!file_exists($template_path)) {
+			throw new \RuntimeException('Template file not found: ' . $template_path);
+		}
 
-		return $template->render( $render_args );
+		// Make variables available to template.
+		$settings = $settings;
+		$post = $object;
+		$args = $args;
+		$sermon = $sermon;
+
+		// Start output buffering.
+		ob_start();
+		
+		// Include template file.
+		include $template_path;
+		
+		// Return buffered output.
+		return ob_get_clean();
 	}
 
 	/**

@@ -1,11 +1,11 @@
 # Sermon Manager #  
-Contributors: wpforchurch, Alex Gutierrez 
-Donate link: http://wpforchurch.com/  
+Contributors: riceguitar
+Donate link: http://audiopod.cloud/  
 Tags: church, sermon, sermons, preaching, podcasting, manage, managing, podcasts, itunes  
-Requires at least: 4.7.0  
-Tested up to: 6.5
-Requires PHP: 7.4  
-Stable tag: 2.30.0
+Requires at least: 1.0
+Tested up to: 6.7.1
+Requires PHP: 8.0
+Stable tag: 1.0
 License: GPLv2  
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -13,12 +13,12 @@ Add audio and video sermons, manage speakers, series, and more to your church we
 
 ## Description ##
 
-### Sermon Manager is the #1 WordPress Sermon Plugin ###
+### AudioPod is the #1 WordPress Sermon Plugin ###
 
 **Plugin is now under new management! 
 **Join our facebook community: https://www.facebook.com/groups/wpforchurch/
 
-Sermon Manager is designed to help churches easily publish sermons online. Some of the features include:
+AudioPod is designed to help churches easily publish sermons online. Some of the features include:
 
 * Add Speakers, Series, Topics, Books, and Service Types
 * Attach images to sermons, series, speakers, and topics
@@ -38,7 +38,7 @@ Sermon Manager is designed to help churches easily publish sermons online. Some 
 
 ### One-Click Importing ###
 
-Sermon Manager supports migration/importing from other popular sermon plugins, such as Sermon Browser and Series Engine.
+AudioPod supports migration/importing from other popular sermon plugins, such as Sermon Browser and Series Engine.
 
 This is a one click process and currently only supports migration/importing within existing WordPress installations.
 Soon you will be able to migrate from those 3rd party plugins to Sermon Manager on a separate server. (for example: moving to completely new website & WordPress installation)
@@ -64,7 +64,7 @@ You can access the paid support options via [our website](http://wpforchurch.com
 
 Bug fixing and fixing unexpected behavior *is free* and *always will be free*. Just [make an issue on GitHub](https://github.com/WP-for-Church/Sermon-Manager/issues/new) or [create a support thread on WordPress](https://wordpress.org/support/plugin/audiopod-wp#new-post) and we will solve it ASAP.
 
-### Sermon Manager Pro Features ###
+### AudioPod Pro Features ###
 
 * Change your look with Templates
 * Multiple Podcast Support
@@ -88,11 +88,6 @@ When you upgrade to Pro you also get premium ticket and support for the free ver
 Would you like to help improve Sermon Manager or report a bug you found? This project is open source on [GitHub](https://github.com/WP-for-Church/Sermon-Manager)!
 
 (Note: Please read [contributing instructions](https://github.com/WP-for-Church/Sermon-Manager/blob/dev/CONTRIBUTING.md) first.)
-
-### WP for Church ###
-
-* [WP for Church](https://wpforchurch.com/) provides plugins and responsive themes for churches using WordPress.
-* Keep up with the latest product news & tips, sign up to our [newsletter](https://www.wpforchurch.com/blog)!
 
 ## Installation ##
 
@@ -126,13 +121,19 @@ Visit the [plugin homepage](https://wpforchurch.com/wordpress-plugins/sermon-man
 2. Sermon Files
 
 ## Changelog ##
+### 1.0.0 ###
+Removed: Sidebar Promotions for Sermon Manager Pro
+Removed: Twig and Twig Templates Completely Removed
+Fixed: PHP 8.X series notices for deprecation of get_class()
+Fixed: PHP notices for missing variables $settings[] array values
+Updated: Changed naming of plugin to AudioPod
+Updated: Merged Sermon Manager Pro and Sermon Manager as one plugin
 
 
 ### 2.30.0 ###
 Fixed: Removed the "Description" custom field.
 Added: "Data Sync" button in Settings to resolve data issues after updating to the latest version. If you encounter any data issues, please use the sync button.
 Added: Option to enable or disable the Gutenberg Block Editor for sermons.
-
 
 ### 2.20.0 ###
 Fixed: TwentyTwentyFour theme design support added.
@@ -168,161 +169,154 @@ Fixed: Sermon series order list when using the shortcode
 Fixed: Compability issues with latest WP 5.9.3
 Fixed: Image size issue
 
+### 2.16.8 ###
+Fixed: Backend error (Service Type field)
+Fixed: Fatal Error when adding new sermon on Version 2.16.7 Call to undefined function
+
 ### 2.16.7 ###
 Fix: Single and mulitple file attachment available
 
 ### 2.16.6 ###
-*Fix: Old Missing PDF file data issue fix
+Fix: Old Missing PDF file data issue fixed
 
 ### 2.16.5 ###
-*Fix: Hyperlinks are Stripped in the Description Field
+Fix: Hyperlinks are Stripped in the Description Field 
 
 ### 2.16.4 ###
-*Fix: Support Multiple PDF File upload For Notes and Bulletins
+Fix: Support Multiple PDF File upload For Notes and Bulletins
 
-### 2.16.3 ###
-*Fix: image size display issue in hortcode  [sermon_images  display="preachers" order="ASC" orderby="id" size="thumbnail"]
-*Fix: No follow attr for mp3 on single & archive
+### 2.163 ###
+Fix: image size display issue in hortcode  [sermon_images  display="preachers" order="ASC" orderby="id" size="thumbnail"]
+Fix: No follow attr for mp3 on single & archive
+
 
 ### 2.16.2 ###
-*Fix: sm_get_screen_ids() Issue Fixed
-*Shortcode parameters control : [sermons title=no description=yes image=yes], Passing yes or no to show title, description and image. Backward compatible. Use only [sermons] if dont want any change. Both are working as backward compatible.
+Fix: sm_get_screen_ids() Issue Fixed
+Shortcode parameters control : [sermons title=no description=yes image=yes], Passing yes or no to show title, description and image. Backward compatible. Use only [sermons] if dont want any change. Both are working as backward compatible.
 
 ### 2.16.1 ###
-*Fix: Wordpress 5.5 Compability issue bug fix
+Fix: Wordpress 5.5 Compability issue bug fix
+
 
 ### 2.16.0 ###
-*Fix: Bug Fix With CMB2
+Fix: Bug Fix With CMB2
 
 ### 2.15.19 ###
-*Fix: security issues
-*Fix: backend error
+Fix: security issues
+Fix: backend error
 
 ### 2.15.18 ###
-* Fix: compatibility issue with PHP 7.4 in Elementor
+Fix: compatibility issue with PHP 7.4 in Elementor
 
-### 2.15.17 ###
-* Fix: Plyr audio download button 
+### 2.13.4 ###
+* Change: Update Plyr to latest
+* Fix: Small bug in media seeking URL detection
+* Fix: PHP notice when non-existing taxonomy used in feed URL
+* Fix: URL-encode atom:link in podcast feed
 
-### 2.15.16 ###
-* Fix: "after" parameter not working in "[sermons]" shortcode
-* Fix: Improve [latest_series] shortcode
-* New: Add sidebar in dashboard compatibility for Pro version
+### 2.13.3 ###
+* New: Add an option to use native player in Safari
+* Change: Revert Plyr for Safari browser
 
-### 2.15.15 ###
-* Fix: RSS feed not working
+### 2.13.2 ###
+* New: Add an option to show date "Published" instead of date "Preached" in feed and frontend
+* Change: Use native player in Safari
+* Change: Separate "Preached" and "Published" dates in admin view
+* Fix: Excerpt meta box not showing up
+* Fix: Fix description not showing in the podcast feed
+* Fix: Fix memory leak when site has big number of sermons
+* Fix: Use non-localized dates in the RSS feed
+* Fix: Fix issues with Sermon Browser importing
 
-### 2.15.14 ###
-* New: Add compatibility for "Pro" theme
-* New: Add a setting to change default sermon ordering (in "Display" tab)
-* Fix: Date filtering in shortcode
-* Fix: Improve [latest_series] shortcode
-* Fix: Service Type filter in backend not working when slug is different from default
-* Dev: Add conditional fields in settings
-* Dev: Add dynamic option retrieval in settings
-* Dev: Fix select field in settings returning error when only one option is defined for it
+### 2.13.1 ###
+* New: Add `list_podcasts` shortcode (thanks @macbookandrew!)
+* New: Support for OceanWP theme (thanks @zSeriesGuy!)
+* Fix: Archive page slug not applying
+* Fix: Feed showing PHP notice in some rare cases
+* Fix: Taxonomy list/images ignoring arguments
+* Fix: Wrappers do not get overriden (thanks @zSeriesGuy!)
 
-### 2.15.13 ###
-* New: Dutch translation (thanks @LeonCB!)
-* New: Add support for Dunamis theme
-* New: Add support for TwentyNineteen
-* New: Add support for ExodosWP
-* Change: Add WordPress author metabox
-* Fix: Service Type not saving in quick edit
+### 2.13.0 ###
+* New: Add a simpler way of overriding sermon render
+* New: Add excerpt support (thanks @robertmain!)
+* New: Add read more link to the sermon description (thanks @robertmain!)
+* New: Add revisions support (thanks @robertmain!)
+* New: Add support for custom WP role capabilities (thanks @zSeriesGuy!)
+* New: Add support for sermon password protection
+* New: Add working file for rendering the feed
+* New: Add a tab in settings for controlling the import
+* Change: Add more options to the recent sermons widget
+* Change: Add a way to get sermon's series image
+* Change: Add an option to hide read more when it's not needed
+* Fix: Audio download button glitches sometimes
+* Fix: Custom preacher label in menu lowercased when label is in lowercase
+* Fix: Feed not validating when audio files use SSL
+* Fix: Fix spacing on Divi theme
+* Fix: Image size shortcode argument not working
+* Fix: MP4 video file being detected as YouTube and therefore not working
+* Fix: SB image import breaking when image is local and does not exist on filesystem
+* Fix: Sermon Browser services import
+* Fix: Sermon Details meta not loading under very specific circumstances
+* Fix: Sermons do not appear if published via API and "Date Preached" not set
+* Fix: Sermons not showing in shortcode under certain timezone conditions
+* Fix: Sermons menu title is "All Sermons" instead of "Sermons"
+* Fix: Shortcode pagination not working when "Plain" permalinks are used
+* Fix: Shortcodes showing in iTunes sermon description
+* Fix: Taxonomy image assignment not working
+* Fix: Title not being in the same line, even though there's enough space
+* Dev: Add a filter for filtering sermon image size
+* Dev: Add more hooks
+* Dev: Add PHPUnit configuration
+* Dev: Add support for WordPress attachment ID for sermon audio files
+* Dev: Add WPCS configuration
+* Dev: All terms now support ordering by latest sermon
+* Dev: Deprecate most of old podcasting functions
+* Dev: Refactor widgets code
 
-### 2.15.12 ###
-* Fix: Fatal error when saving a sermon
-* Fix: Podcast buttons shortcode has unnecessary left margin (thanks @macbookandrew!)
+### 2.13.2 ###
+* Fix: Excerpt meta box not showing up
 
-### 2.15.11 ###
-* New: Add support for "The7" theme
-* Change: Add "sermon" order to [sermon_images] shortcode. It will order the series by newest sermon
-* Fix: Improve the speed of post saving on websites with many sermons
-* Dev: Fix terms not having sermon date set
+### 2.13.1 ###
+* New: Add `list_podcasts` shortcode (thanks @macbookandrew!)
+* New: Support for OceanWP theme (thanks @zSeriesGuy!)
+* Fix: Archive page slug not applying
+* Fix: Feed showing PHP notice in some rare cases
+* Fix: Taxonomy list/images ignoring arguments
+* Fix: Wrappers do not get overriden (thanks @zSeriesGuy!)
 
-### 2.15.10 ###
-* Change: Add "include" and "exclude" parameters to the shortcode
-* Change: Add an option to force loading plugin views
-* Fix: Edge case PHP bug in feed with taxonomy
-* Fix: Notice when using shortcode
-
-### 2.15.9 ###
-* New: Add support for Hueman and Hueman Pro themes
-* New: Add support for NativeChurch theme
-* New: Add support for Betheme theme
-* Change: Add NIV to verse Bible version
-* Change: Replace series subtitle with short description in the feed
-* Change: Add "action" parameter to filtering shortcode. Possible options: "none" (default), "home", "site".
-* Change: Update Plyr to 3.4.7
-* Fix: Notice in settings after saving a field
-* Fix: Filtering arguments not working in the sermons shortcode
-* Fix: Filtering not hiding
-
-### 2.15.8 ###
-* Dev: Add callable select options (pass function name as string)
-* Dev: Add a way to pass custom values to settings
-
-### 2.15.7 ###
-* Fix: PHP warning when archive output is used wrongly
-* Fix: Podcast items may be sorted the wrong way
-
-### 2.15.6 ###
-* Change: Disable autocomplete for date preached, since it obstructed the view on mobile
-* Fix: Comments not appearing on Divi
-* Fix: All podcast images are invalid
-
-### 2.15.5 ###
-* Change: Disable check for PHP output buffering
-
-### 2.15.4 ###
-* Fix: Output Buffering detected as disabled when set to 0
-
-### 2.15.3 ###
-* New: Add option to disable "views" count for editors and admins
-* New: Add option to enable sermon series image fallback in the feed
-* Fix: Podcast shortcode SVG icons not working in Firefox
-* Fix: Getting 404 on filtering
-* Fix: Sermon Manager errors out when output buffering is disabled
-
-### 2.15.2 ###
-* Change: Add Maranatha theme support
-* Change: Add Saved theme support
-* Change: Add Brandon theme support
-* Change: Remove default default image
-* Fix: Plyr not loading when Cloudflare is used
-* Fix: Sermon image not showing up
-* Fix: image_size argument not working in shortcode
-
-### 2.15.1 ###
-* Fix: Multi-term filter for feeds not working
-
-### 2.15.0 ###
-* New: Add ability to override Sermon Manager's CSS by putting "sermon.css" file in theme (thanks @zSeriesGuy)
-* New: Add default image during installation (thanks @zSeriesGuy)
-* New: Add setting for showing and hiding the filter (shortcode and archive, thanks @zSeriesGuy)
-* New: Add setting for default image (thanks @zSeriesGuy)
-* Change: Update Plyr to 3.4.3
-* Change: Re-organized the settings, with more descriptive options
-* Fix: Fix importing from Sermon Browser stopping after first sermon
-* Fix: Audio file length and size not being automatically filled
-* Fix: Taxonomy archive sermons ordered by date preached
-* Fix: "sermon" argument not working in shortcode
-* Fix: Database errors on Import/Export screen on some hosts
-* Fix: Pause button not showing up when file is being played
-* Fix: "Upload Image" button not working in Podcast settings
-* Fix: Audio file sometime not being correct
-* Fix: Add more theme support for pagination
-* Fix: Image selector in settings now showing up
-* Fix: Filter not working correctly in shortcode (thanks @zSeriesGuy)
-* Fix: Plyr not having border
-* Dev: Update function for getting sermon image to return fallback with any option
-
-### 2.14.0 ###
-* New: Finally add support for Sermon Browser bible verses
-* Change: Adjust width of Title column in admin
-* Change: Organize "Debug" (now "Advanced") settings
-* Change: Make filters' width shorter
-* Fix: Taxonomy feed URLs not picked up by Sermon Manager
-* Fix: Allow deleted imported sermons to be re-imported
-
-Note: The rest of the changelog is in changelog.txt
+### 2.13.0 ###
+* New: Add a simpler way of overriding sermon render
+* New: Add excerpt support (thanks @robertmain!)
+* New: Add read more link to the sermon description (thanks @robertmain!)
+* New: Add revisions support (thanks @robertmain!)
+* New: Add support for custom WP role capabilities (thanks @zSeriesGuy!)
+* New: Add support for sermon password protection
+* New: Add working file for rendering the feed
+* New: Add a tab in settings for controlling the import
+* Change: Add more options to the recent sermons widget
+* Change: Add a way to get sermon's series image
+* Change: Add an option to hide read more when it's not needed
+* Fix: Audio download button glitches sometimes
+* Fix: Custom preacher label in menu lowercased when label is in lowercase
+* Fix: Feed not validating when audio files use SSL
+* Fix: Fix spacing on Divi theme
+* Fix: Image size shortcode argument not working
+* Fix: MP4 video file being detected as YouTube and therefore not working
+* Fix: SB image import breaking when image is local and does not exist on filesystem
+* Fix: Sermon Browser services import
+* Fix: Sermon Details meta not loading under very specific circumstances
+* Fix: Sermons do not appear if published via API and "Date Preached" not set
+* Fix: Sermons not showing in shortcode under certain timezone conditions
+* Fix: Sermons menu title is "All Sermons" instead of "Sermons"
+* Fix: Shortcode pagination not working when "Plain" permalinks are used
+* Fix: Shortcodes showing in iTunes sermon description
+* Fix: Taxonomy image assignment not working
+* Fix: Title not being in the same line, even though there's enough space
+* Dev: Add a filter for filtering sermon image size
+* Dev: Add more hooks
+* Dev: Add PHPUnit configuration
+* Dev: Add support for WordPress attachment ID for sermon audio files
+* Dev: Add WPCS configuration
+* Dev: All terms now support ordering by latest sermon
+* Dev: Deprecate most of old podcasting functions
+* Dev: Refactor widgets code
