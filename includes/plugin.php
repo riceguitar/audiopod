@@ -86,41 +86,11 @@ class Plugin {
 	public $podcasting_manager;
 
 	/**
-	 * Plugin constructor.
-	 *
-	 * @access private
-	 */
-	private function __construct() {
-		// Register autoloader.
-		if ( ! $this->_register_autoloader() ) {
-			add_action(
-				'admin_notices',
-				function () {
-					echo '<div class="notice notice-error"><p>Sermon Manager Pro was not built properly (Composer not did not run). Please report this to support.</p></div>';
-				}
-			);
-
-			return;
-		}
-
-		// Divi page meta override.
-		include_once SMP_PATH . 'includes/smp-divi-override.php';
-
-		add_action( 'init', array( $this, 'init' ), 0 );
-
-	}
-
-	/**
 	 * Register autoloader.
 	 *
 	 * @access private
 	 */
 	private function _register_autoloader() {
-		if ( ! file_exists( SMP_PATH . 'vendor/autoload.php' ) ) {
-			return false;
-		}
-
-		require SMP_PATH . 'vendor/autoload.php';
 		require SMP_PATH . 'includes/autoloader.php';
 
 		Autoloader::run();

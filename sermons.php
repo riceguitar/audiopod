@@ -1,4 +1,4 @@
-<?php // phpcs:ignore
+<?php
 /**
  * Plugin Name: AudioPod
  * Plugin URI: https://audiopod.cloud
@@ -11,7 +11,6 @@
  * Tested up to PHP : 8.2
  *
  * Text Domain: audiopod-wp
- * Domain Path: /languages/
  *
  */
 
