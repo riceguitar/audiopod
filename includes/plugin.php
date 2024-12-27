@@ -300,6 +300,7 @@ class Plugin {
 				wp_enqueue_style( 'sm_pro_frontend_style', SMP_URL . 'assets/css/frontend.min.css', array(), SMP_VERSION );
 				// wp_add_inline_style( 'sm_pro_frontend_style', wp_sprintf( '.smpro-items-container, .smpro-items {--smpro-layout-columns: %s}', $smpro_layout_columns ) );
 
+
 				wp_enqueue_script( 'sm_pro_masonry_js', SMP_URL . 'assets/js/masonry.js', array(), SMP_VERSION, false );
 			}
 		);
@@ -362,7 +363,6 @@ class Plugin {
 		add_filter(
 			'verse_popup_disable',
 			function ( $default ) {
-
 				return $default;
 			}
 		);
@@ -476,7 +476,6 @@ class Plugin {
 		add_filter(
 			'sm_audio_player',
 			function ( $output, $source, $source_ori ) {
-
 				//$settings = Templating_Settings::get_settings();
 
 				if ( ! empty( $settings['show_download_button'] ) && 'yes' === $settings['show_download_button'] ) {
