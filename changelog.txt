@@ -1,3 +1,9 @@
+### 2.30.2 ###
+Release Date: 12/28/2024
+Added: Created a Migrator on the Settings Admin Area - this will copy Meta Data from sermon_description to post-content and then delete sermon_description.
+Removed: Removed work around for displaying and querying sermon_description directly within the theming template.
+Removed: Links and meta boxes to premium support from SermonManagerPro have been removed as they've abandoned project.
+
 ### 2.30.1 ###
 Release Date: 12/28/2024
 Fixed: Provided a sermon_description work around that displays legacy sermon descriptions in addition to the_content();
