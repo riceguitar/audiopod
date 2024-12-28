@@ -1,3 +1,9 @@
+### 2.30.1 ###
+Release Date: 12/28/2024
+Fixed: Provided a sermon_description work around that displays legacy sermon descriptions in addition to the_content();
+Updated: Switched the plugin name in the Plugins list and bumped version number
+Updated: Support link directs to AudioPod
+
 ### 2.30.0 ###
 Fixed: Removed the "Description" custom field.
 Added: "Data Sync" button in Settings to resolve data issues after updating to the latest version. If you encounter any data issues, please use the sync button.

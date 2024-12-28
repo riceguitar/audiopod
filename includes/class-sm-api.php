@@ -49,7 +49,7 @@ class SM_API {
 			'sermon_audio',
 			'sermon_audio_duration',
 			'bible_passage',
-			// 'sermon_description',
+			'sermon_description',
 			'sermon_video_embed',
 			'sermon_video_url',
 			'sermon_bulletin',
