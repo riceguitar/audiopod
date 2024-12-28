@@ -117,8 +117,32 @@ if(!function_exists('is_plugin_active')){
 				}else{
 					?>
 					<div class="wpfc-sermon-single-description">
-				<?php   the_content() ?>					
-				</div>
+
+						<?php 
+						/*
+							Sermon Manager previously stored the sermon/post description
+							into a meta field 'sermon_description'. The migration process
+							to newer versions is very unreliable and buggy. As such here
+							is a work around that will query the meta field and display it
+							if content is available there instead of the_content();
+						*/
+
+						$content = get_the_content();
+						$legacy_content = get_post_meta( get_the_ID(), 'sermon_description', true );
+
+						if ($content) {
+
+							echo '<!-- the_content -->';
+							the_content();
+						
+						} elseif ($legacy_content) {
+
+							echo '<!-- legacy_content -->';
+							echo $legacy_content;
+						
+						}
+					?>
+					</div>
 					<?php
 				}
 				 ?>			
