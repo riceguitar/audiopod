@@ -18,10 +18,17 @@ class SM_Settings_Migrator extends SM_Settings_Page {
         $this->id    = 'migrator';
         $this->label = __('Migrator', 'sermon-manager-for-wordpress');
 
-        // Hide the save button
-        $GLOBALS['hide_save_button'] = true;
+        // Add action to hide save button only on this tab
+        add_action('sm_settings_' . $this->id, array($this, 'ap_hide_save_button'), 5);
 
         parent::__construct();
+    }
+
+    /**
+     * Hide save button only on migrator tab
+     */
+    public function ap_hide_save_button() {
+        $GLOBALS['hide_save_button'] = true;
     }
 
     /**
