@@ -43,7 +43,7 @@ $current_tab = empty( $current_tab ) ? 'general' : $current_tab;
 			</form>
 		</div>
 		<div class="settings-side">
-			<div class="postbox sm-box" style="background: #f6fbff; display: block;
+			<div class="postbox sm-box" style="background: #f6fbff; display: none;
     padding: 0 .7rem;">
 				<h2><span>IMPORTANT: Only if sermon content in missing</span>
 				</h2>
@@ -58,45 +58,7 @@ $current_tab = empty( $current_tab ) ? 'general' : $current_tab;
 					
 				</div>
 			</div>
-			<?php if ( ! defined('SMP_SM_VERSION') ) : ?>
-			<div class="postbox sm-box" style="background: #f6fbff;">
-				<h3><span>Sermon Manager Pro</span>
-				</h3>
-				<div class="inside">
-					<p>Imagine being able to change the look of your sermons with one click or use your favorite page
-						builder, or create multiple podcasts...well now you can with Sermon Manager Pro, plus a lot
-						more. </p>
-					<div style="text-align:center">
-						<a href="https://sermonmanager.pro/?utm_source=sermon-manager&amp;utm_medium=wordpress"
-								target="_blank" class="button-secondary">Get Pro</a>&nbsp;
-						<a href="https://sermonmanager.pro/?utm_source=sermon-manager&amp;utm_medium=wordpress"
-								class="button-primary">Learn More</a>
-					</div>
-					<div class="description">
-						<span>Early Adopter pricing ends Nov 23</span>
-					</div>
-				</div>
-			</div>
-			<div class="postbox sm-box">
-				<h3><span><?php esc_html_e( 'Need Some Help?', 'sermon-manager-for-wordpress' ); ?></span>
-				</h3>
-				<div class="inside">
-					<?php // translators: %s Sign up URL. ?>
-					<p><?php echo wp_sprintf( esc_html__( 'Did you know you can get expert support for only $49 per year! %s today and get support from the developers who are building the Sermon Manager.', 'sermon-manager-for-wordpress' ), '<a href="https://wpforchurch.com/wordpress-plugins/sermon-manager/?utm_source=sermon-manager&utm_medium=wordpress" target="_blank">' . esc_html__( 'Sign up', 'sermon-manager-for-wordpress' ) . '</a>' ); ?></p>
-					<div style="text-align:center">
-						<a href="https://wordpress.org/support/plugin/sermon-manager-for-wordpress"
-								target="_blank" class="button-secondary">
-							<?php esc_html_e( 'Free&nbsp;Support', 'sermon-manager-for-wordpress' ); ?></a>&nbsp;
-						<a href="https://wpforchurch.com/my/clientarea.php?utm_source=sermon-manager&utm_medium=wordpress"
-								class="button-primary">
-							<?php esc_html_e( 'Priority&nbsp;Support', 'sermon-manager-for-wordpress' ); ?></a>
-					</div>
-					<div class="description">
-						<span><?php esc_html_e( 'We offer limited free support via WordPress.org', 'sermon-manager-for-wordpress' ); ?></span>
-					</div>
-				</div>
-			</div>
-			<?php endif; ?>
+			
 			<div class="postbox sm-box">
 				<h3>
 					<span><?php esc_html_e( 'Frequently Asked Questions', 'sermon-manager-for-wordpress' ); ?></span>

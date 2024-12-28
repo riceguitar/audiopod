@@ -143,7 +143,9 @@ function render_wpfc_sorting( $args = array() ) {
 			if ( get_query_var( 'paged' ) === 0 ) {
 				$args['action'] = '';
 			} else {	
-				$args['action'] = str_replace( parse_url( get_pagenum_link(), PHP_URL_QUERY ), '', get_pagenum_link() );
+				$args['action'] = wp_parse_url(get_pagenum_link(), PHP_URL_PATH) ?: get_pagenum_link();
+
+				//$args['action'] = str_replace( parse_url( get_pagenum_link(), PHP_URL_QUERY ), '', get_pagenum_link() );
 			}
 			break;
 	}
@@ -231,7 +233,7 @@ function get_wpfc_sermon_meta( $meta_key = '', $post = null ) {
 		global $post;
 	}
 
-	$data = get_post_meta( $post->ID, $meta_key, true );
+	$data = isset( $post->ID ) ? get_post_meta( $post->ID, $meta_key, true ) : null;
 	if ( '' !== $data ) {
 		return $data;
 	}
