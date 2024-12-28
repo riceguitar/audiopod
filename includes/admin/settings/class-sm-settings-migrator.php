@@ -34,7 +34,7 @@ class SM_Settings_Migrator extends SM_Settings_Page {
             array(
                 'title' => __('Sermon Manager Migration Tool', 'sermon-manager-for-wordpress'),
                 'type'  => 'title',
-                'desc'  => __('This tool helps you migrate sermon descriptions to post content and manage other sermon data migrations.', 'sermon-manager-for-wordpress'),
+                'desc'  => __('This tool helps you migrate sermon descriptions to post content. This process will destroy your sermon_description upon completion.<br/><br/><strong>Warning! Backup your database before performing this action!</strong>', 'sermon-manager-for-wordpress'),
                 'id'    => 'migrator_options',
             ),
             array(
